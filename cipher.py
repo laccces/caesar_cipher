@@ -5,37 +5,30 @@ def cipher(string, shift):
     for item in lst:
         ordinal.append(ord(item))
 
-    shifted = []    
-    
+    shifted = []        
     for num in ordinal:
-        shifted.append(num + shift)
+        if num == 32:
+            shifted.append(num)
+        else: 
+            shifted.append(num + shift)
     
-    num_wrap = []
-
-    for i in shifted:
-        if i >= 65 and i <= 90:
-            num_wrap.append(((i - 65 + shift) % 26) + 65)
-        elif i >= 97 and i <= 122:
-            num_wrap.append(((i - 97 + shift) % 26) + 97)
-        else:
-            num_wrap.append(i)
+    # num_wrap = []
+    # for i in shifted:
+    #     if 65 <= i <= 90:
+    #         num_wrap.append(((i - 65 + shift) % 26) + 65)
+    #     elif 97 <= i <= 122:
+    #         num_wrap.append(((i - 97 + shift) % 26) + 97)
+    #     else:
+    #         num_wrap.append(i)
 
     letters_shifted = []
-    
-    for num in num_wrap:
+    for num in shifted:
         letters_shifted.append(chr(num))
 
     code = ''.join(letters_shifted)
     print(code)
 
-cipher("test test", 1)
-
-            
-
-
-
-
-
-
-  
-  #32 is a space
+cipher("Lorem ipsum dolor sit amet", 1)
+cipher("Lorem ipsum dolor sit amet", 10)
+cipher("Lorem ipsum dolor sit amet", 15)
+#def decode(string, shift):
